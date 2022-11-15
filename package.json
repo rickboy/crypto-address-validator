@@ -270,10 +270,11 @@
   "scripts": {
     "bundle": "browserify src/wallet_address_validator.js --standalone WAValidator --outfile dist/wallet-address-validator.js",
     "minify": "uglifyjs -c -m -o dist/wallet-address-validator.min.js -- dist/wallet-address-validator.js",
-    "test:node": "mocha test && nyc --reporter=text-lcov mocha",
+    "test:node": "mocha test",
     "test:browser": "echo Temp bypass until jenkins setup",
     "test:browser_": "karma start",
-    "test": "yarn run bundle && yarn run minify && npm run test:node && npm run test:browser",
+    "test:coverage": "nyc report --reporter=lcov --report-dir='./jscoverage'",
+    "test": "yarn run bundle && yarn run minify && npm run test:node && npm run test:browser && npm run test:coverage",
     "start": "npm run bundle && npm run minify && npm test",
     "generateReadme": "node debug/generateReadme.js && git add README.md dist/wallet-address-validator.min.js.gz package.json",
     "createMin": "yarn run bundle && yarn run minify && git add dist/wallet-address-validator.js dist/wallet-address-validator.min.js",
