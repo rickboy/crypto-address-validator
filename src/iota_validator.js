@@ -1,4 +1,4 @@
-var IOTA = require('@iota/validators')
+const IOTA = require('@iota/validators')
 
 function isValidIotaAddress (address, currency, networkType) {
   var isValid = IOTA.isAddress(address)
