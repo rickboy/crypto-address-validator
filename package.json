@@ -273,7 +273,7 @@
     "test:node": "mocha test",
     "test:browser": "echo Temp bypass until jenkins setup",
     "test:browser_": "karma start",
-    "test:coverage": "nyc report --reporter=lcov --report-dir='./jscoverage'",
+    "test:coverage": "nyc --reporter=lcov --report-dir='./jscoverage' mocha",
     "test": "yarn run bundle && yarn run minify && npm run test:node && npm run test:browser && npm run test:coverage",
     "start": "npm run bundle && npm run minify && npm test",
     "generateReadme": "node debug/generateReadme.js && git add README.md dist/wallet-address-validator.min.js.gz package.json",
