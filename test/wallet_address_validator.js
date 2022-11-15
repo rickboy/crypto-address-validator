@@ -17,6 +17,10 @@ function invalid (address, currency, networkType, addressFormats) {
   expect(result).to.equal(false)
 }
 
+function thrown (address, currency, networkType, addressFormats) {
+  expect(function() {WAValidator.validate(address, currency, networkType, addressFormats)}).to.throw('Missing validator for currency: ' + currency)
+}
+
 describe('WAValidator.validate()', function () {
   describe('valid results', function () {
     it('should return true for correct bitcoin addresses', function () {
@@ -887,6 +891,14 @@ describe('WAValidator.validate()', function () {
 
     it('should return false for incorrect IOTA addresses', function () {
       commonTests('iota')
+    })
+
+    it('should return false for correct IOTA addresses', function () {
+      invalid('c3e74fdd4175525fc3d6201ba0ffaf805cdfe1308ebe5afd6bca6f759293cb0a', 'iota')
+    })
+
+    it('should throw error for unknown coin', function () {
+      thrown('2cWKMJemoBaho4EjxKEBGJtrAg6bzdrW7NiGEDohzfXh1VPZgn32MMJCuo2oG4sQoQvoM', 'unknown')
     })
   })
 })
