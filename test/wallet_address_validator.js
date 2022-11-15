@@ -541,6 +541,10 @@ describe('WAValidator.validate()', function () {
       valid('AKHSHWO2TUWE53RMVG6ZUBNAEX6MTYPT76TCIDCDWYUUTK6HCJTZS2HDQU', 'algo')
     })
 
+    it('should return false for incorrect Algorand addresses', () => {
+      invalid('LCRY3LYAANTVS3XRHEHWHGXRTKZYVTX55P5IA2AT5ZDJ4CWZFFZIKVHLI', 'algo')
+    })
+
     it('should return true for correct Enigma addresses', () => {
       valid('0xd3bb6192e78880bf7322dc557673ce45a77dd568', 'eng')
       valid('0x48337b8dd78a9761a73d0fbb8f5c8a0ddda32d85', 'eng')
@@ -879,6 +883,10 @@ describe('WAValidator.validate()', function () {
 
     it('should return true for correct ADA addresses', function () {
       valid('2cWKMJemoBaho4EjxKEBGJtrAg6bzdrW7NiGEDohzfXh1VPZgn32MMJCuo2oG4sQoQvoM', 'ada')
+    })
+
+    it('should return false for incorrect IOTA addresses', function () {
+      commonTests('iota')
     })
   })
 })
